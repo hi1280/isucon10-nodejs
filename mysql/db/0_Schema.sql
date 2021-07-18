@@ -19,8 +19,10 @@ CREATE TABLE isuumo.estate
     features    VARCHAR(64)         NOT NULL,
     popularity  INTEGER             NOT NULL,
     point       POINT AS (POINT(latitude, longitude)) STORED NOT NULL,
+    popularity_desc INTEGER AS (-popularity) NOT NULL,
     SPATIAL INDEX estate_point_idx (point),
-    INDEX rent_id_idx (rent ASC, id ASC)
+    INDEX rent_id_idx (rent ASC, id ASC),
+    INDEX popularity_id_idx(popularity_desc, id)
 );
 
 CREATE TABLE isuumo.chair
@@ -38,5 +40,7 @@ CREATE TABLE isuumo.chair
     kind        VARCHAR(64)     NOT NULL,
     popularity  INTEGER         NOT NULL,
     stock       INTEGER         NOT NULL,
-    INDEX price_id_idx (price ASC, id ASC)
+    popularity_desc INTEGER AS (-popularity) NOT NULL,
+    INDEX price_id_idx (price ASC, id ASC),
+    INDEX popularity_id_idx(popularity_desc, id)
 );
