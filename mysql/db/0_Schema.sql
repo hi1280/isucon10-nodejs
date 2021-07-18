@@ -17,7 +17,9 @@ CREATE TABLE isuumo.estate
     door_height INTEGER             NOT NULL,
     door_width  INTEGER             NOT NULL,
     features    VARCHAR(64)         NOT NULL,
-    popularity  INTEGER             NOT NULL
+    popularity  INTEGER             NOT NULL,
+    point       POINT AS (POINT(latitude, longitude)) STORED NOT NULL,
+    SPATIAL INDEX estate_point_idx (point)
 );
 
 CREATE TABLE isuumo.chair
