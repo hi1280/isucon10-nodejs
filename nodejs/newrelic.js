@@ -65,5 +65,11 @@ exports.config = {
       'response.headers.setCookie*',
       'response.headers.x*'
     ]
+  },
+  slow_sql: {
+    enabled: true
+  },
+  transaction_tracer: {
+    record_sql: 'raw'
   }
 }
